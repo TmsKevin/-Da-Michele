@@ -93,12 +93,21 @@ const heroSlides = [
   { image: "Innen2_623c7391.jpg", label: "Il bar", alt: "Bar und zweiter Innenraum von Ristorante Pizzeria da Michele Kippenheim" },
 ];
 
+const berlinClock = () => {
+  const now = new Date();
+  const time = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hour12: false }).format(now);
+  const [hour, minute] = time.split(":").map(Number);
+  const totalMinutes = hour * 60 + minute;
+  return { time, isOpen: totalMinutes >= 17 * 60 && totalMinutes < 21 * 60 + 30 };
+};
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [query, setQuery] = useState("");
   const [vegetarianOnly, setVegetarianOnly] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [clock, setClock] = useState(berlinClock);
   const [reservationOpen, setReservationOpen] = useState(false);
   const [reserved, setReserved] = useState(false);
 
@@ -114,6 +123,11 @@ export default function Home() {
 
   useEffect(() => {
     const timer = window.setInterval(() => setHeroSlide((current) => (current + 1) % heroSlides.length), 5600);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setClock(berlinClock()), 1000);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -150,7 +164,7 @@ export default function Home() {
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
           </div>
           <div className="hero-meta">
-            <div><span className="meta-label">HEUTE GEÖFFNET</span><strong>17:00 — 21:30</strong></div>
+            <div className="live-status"><span className="meta-label"><i className={clock.isOpen ? "status-dot is-open" : "status-dot"} />{clock.isOpen ? "JETZT GEÖFFNET" : "GERADE GESCHLOSSEN"}</span><strong>{clock.time} <small>UHR</small></strong></div>
             <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
           <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
