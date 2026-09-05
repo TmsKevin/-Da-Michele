@@ -468,3 +468,15 @@ h1 i, h2 i, .image-label i { color: #d67c5e; font-weight: 500; }
 .status-admin { padding: 0; background: transparent; color: #6f6258; font: inherit; cursor: pointer; transition: color .18s ease; }
 .status-admin:hover { color: #d68a48; }
 @media (max-width: 820px) { .status-admin { width: 100%; text-align: left; } }
+
+.hero-live-clock { width: min(100%, 285px); margin-top: 28px; padding: 14px 17px 15px; border: 1px solid rgba(255,250,244,.2); background: linear-gradient(135deg, rgba(255,250,244,.09), rgba(255,250,244,.025)); backdrop-filter: blur(8px); }
+.hero-live-top { display: flex; align-items: center; gap: 8px; color: #d8c9ba; font: 9px 'DM Mono', monospace; letter-spacing: .1em; }
+.hero-live-top em { margin-left: auto; color: #e0a160; font-style: normal; font-size: 8px; letter-spacing: .18em; }
+.hero-live-clock > strong { display: block; margin: 4px 0 1px; color: #fffaf4; font: 500 clamp(40px, 4vw, 58px)/1 'DM Mono', monospace; letter-spacing: -.08em; font-variant-numeric: tabular-nums; }
+.hero-live-hours { color: #a99b8e; font-size: 10px; }
+.hero-live-clock .status-dot { flex: 0 0 auto; }
+@media (max-width: 820px) {
+  .hero-live-clock { width: 100%; max-width: 315px; margin-top: 24px; padding: 13px 15px 14px; }
+  .hero-live-clock > strong { font-size: 45px; }
+  .hero-meta { margin-top: 42px; }
+}

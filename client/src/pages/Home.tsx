@@ -178,12 +178,12 @@ export default function Home() {
           <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Pizzeria da Michele <span className="eyebrow-dot">✦</span></div>
           <h1>Italienisch, <i>warm</i><br />und direkt<br />auf dem Handy.</h1>
           <p className="hero-lede">Frisch zubereitete italienische Spezialitäten in Kippenheim — mit Abholung und einem Ambiente, das drinnen wie draußen in Erinnerung bleibt.</p>
+          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className={`status-dot ${displayedClock.state}`} /><span>{displayedClock.state === "manual" ? "VORÜBERGEHEND GESCHLOSSEN" : displayedClock.state === "open" ? "JETZT GEÖFFNET" : displayedClock.state === "opening" ? "ÖFFNET DEMNÄCHST" : displayedClock.state === "closing" ? "SCHLIESST DEMNÄCHST" : "GERADE GESCHLOSSEN"}</span><em>LIVE</em></div><strong>{clock.time}</strong><span className="hero-live-hours">Heute · 17:00 — 21:30 Uhr</span></div>
           <div className="hero-actions">
             <button className="button button-light" onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}>Speisekarte ansehen <ArrowRight size={16} /></button>
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
           </div>
           <div className="hero-meta">
-            <div className="live-status"><span className="meta-label"><i className={`status-dot ${displayedClock.state}`} />{displayedClock.state === "manual" ? "VORÜBERGEHEND GESCHLOSSEN" : displayedClock.state === "open" ? "JETZT GEÖFFNET" : displayedClock.state === "opening" ? "ÖFFNET DEMNÄCHST" : displayedClock.state === "closing" ? "SCHLIESST DEMNÄCHST" : "GERADE GESCHLOSSEN"}</span><strong>{clock.time} <small>UHR</small></strong></div>
             <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
           <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
