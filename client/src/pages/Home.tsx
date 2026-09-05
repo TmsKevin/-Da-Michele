@@ -26,7 +26,8 @@ const asset = (name: string) => {
     "Innen2_623c7391.jpg": "Innen2.jpg",
     "Aussen_c58e6a71.jpg": "Aussen.jpg",
   };
-  return `/assets/${localAssets[name] ?? name}`;
+  const base = import.meta.env.DEV ? "https://pizzeria-da-michele-kippenheim.netlify.app" : "";
+  return `${base}/assets/${localAssets[name] ?? name}`;
 };
 
 const dishes = [
