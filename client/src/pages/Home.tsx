@@ -25,6 +25,11 @@ const asset = (name: string) => {
     "Innen1_b850898b.jpg": "Innen1.jpg",
     "Innen2_623c7391.jpg": "Innen2.jpg",
     "Aussen_c58e6a71.jpg": "Aussen.jpg",
+    "pizza_070a5566.jpg": "pizza.jpg",
+    "italian-table_c93f51db.webp": "italian-table.webp",
+    "burrata-pasta_089f37dc.jpg": "burrata-pasta.jpg",
+    "caprese_1a6ebdc6.webp": "caprese.webp",
+    "pinsa-burrata_a2ceab06.jpg": "pinsa-burrata.jpg",
   };
   const base = import.meta.env.DEV ? "https://pizzeria-da-michele-kippenheim.netlify.app" : "";
   return `${base}/assets/${localAssets[name] ?? name}`;
