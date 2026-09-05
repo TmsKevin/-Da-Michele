@@ -278,3 +278,51 @@ h1 i, h2 i, .image-label i { color: #d67c5e; font-weight: 500; }
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
 }
+
+.legal-shell { min-height: 100vh; background: #f6f0e8; color: #25201c; }
+.legal-topbar { height: 76px; padding: 0 clamp(20px, 7vw, 110px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #d9cec0; }
+.back-link { display: inline-flex; gap: 9px; align-items: center; color: #75695e; font-size: 12px; }
+.back-link:hover, .source-link:hover, .inline-link:hover { color: #b6422f; }
+.legal-hero { padding: 95px clamp(25px, 13vw, 190px) 48px; background: #25201c; color: #fffaf4; }
+.legal-hero h1 { font: 500 clamp(52px, 7vw, 92px)/.88 'Playfair Display', serif; letter-spacing: -.06em; margin: 18px 0 54px; }
+.legal-hero h1 i { color: #d67c5e; }
+.legal-rule { width: 100%; height: 1px; background: #50463d; }
+.legal-content { max-width: 1030px; margin: 0 auto; padding: 76px 25px 115px; }
+.legal-content p { color: #75695e; font-size: 14px; line-height: 1.75; }
+.legal-content h2 { color: #25201c; font: 500 30px/.95 'Playfair Display', serif; letter-spacing: -.04em; margin: 0 0 20px; }
+.legal-content h2:not(:first-child) { margin-top: 47px; }
+.legal-content address { color: #75695e; font-size: 14px; line-height: 1.8; font-style: normal; }
+.legal-content address a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-intro, .lead-paragraph { color: #25201c !important; font: 500 clamp(22px, 3vw, 32px)/1.25 'Playfair Display', serif !important; letter-spacing: -.03em; max-width: 745px; margin-bottom: 55px !important; }
+.about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 68px; align-items: start; }
+.about-grid > div > p:not(.lead-paragraph) { max-width: 470px; }
+.about-image { width: 100%; height: 410px; object-fit: cover; object-position: center; display: block; }
+.address-card { display: flex; align-items: start; gap: 13px; margin-top: 46px; padding: 22px 0; border-top: 1px solid #d9cec0; border-bottom: 1px solid #d9cec0; color: #b6422f; }
+.address-card > div { display: flex; flex-direction: column; gap: 6px; color: #75695e; font-size: 12px; }
+.address-card strong { color: #25201c; font-weight: 600; }
+.address-card a { display: inline-flex; align-items: center; gap: 7px; margin-top: 7px; color: #b6422f; }
+.legal-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 82px; }
+.legal-columns section { min-width: 0; }
+.hours-detail { border-top: 1px solid #d9cec0; }
+.hours-detail p { display: flex; justify-content: space-between; gap: 15px; padding: 14px 0; border-bottom: 1px solid #d9cec0; font-size: 12px; }
+.hours-detail b { color: #25201c; text-align: right; font-weight: 500; }
+.source-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 25px; color: #b6422f; font-size: 12px; border-bottom: 1px solid #b6422f; padding-bottom: 5px; }
+.legal-long { max-width: 770px; }
+.legal-long p { margin-bottom: 17px; }
+.inline-link { color: #b6422f; text-decoration: underline; text-underline-offset: 3px; }
+.source-note { margin-top: 65px; padding: 18px 20px; border-left: 2px solid #b6422f; background: #ebe1d4; color: #75695e; font-size: 11px; line-height: 1.6; }
+.source-note a { color: #b6422f; text-decoration: underline; }
+.legal-footer { padding: 24px clamp(25px, 7vw, 110px); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #25201c; color: #94867a; font: 9px 'DM Mono', monospace; letter-spacing: .05em; }
+.legal-footer div { display: flex; gap: 18px; }
+.legal-footer a:hover { color: #d68a48; }
+@media (max-width: 700px) {
+  .legal-topbar { height: 68px; }
+  .legal-hero { padding: 72px 25px 38px; }
+  .legal-hero h1 { font-size: 57px; margin-bottom: 40px; }
+  .legal-content { padding: 57px 25px 80px; }
+  .about-grid, .legal-columns { grid-template-columns: 1fr; gap: 48px; margin-top: 56px; }
+  .about-image { height: 340px; order: -1; }
+  .legal-columns h2:not(:first-child) { margin-top: 38px; }
+  .legal-footer { align-items: flex-start; flex-direction: column; }
+  .legal-footer div { flex-wrap: wrap; }
+}
