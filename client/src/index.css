@@ -459,4 +459,8 @@ h1 i, h2 i, .image-label i { color: #d67c5e; font-weight: 500; }
 .status-dot { width: 6px; height: 6px; display: inline-block; border-radius: 50%; background: #cb755b; box-shadow: 0 0 0 3px rgba(203,117,91,.15); }
 .status-dot.is-open { background: #87bd79; box-shadow: 0 0 0 3px rgba(135,189,121,.16); animation: live-pulse 1.8s ease-in-out infinite; }
 @keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
-@media (prefers-reduced-motion: reduce) { .status-dot.is-open { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .status-dot.open, .status-dot.opening, .status-dot.closing { animation: none; } }
+.status-dot.open { background: #87bd79; box-shadow: 0 0 0 3px rgba(135,189,121,.16); animation: live-pulse 1.8s ease-in-out infinite; }
+.status-dot.opening { background: #e0a160; box-shadow: 0 0 0 3px rgba(224,161,96,.16); animation: live-pulse 1.4s ease-in-out infinite; }
+.status-dot.closing { background: #d67c5e; box-shadow: 0 0 0 3px rgba(214,124,94,.16); animation: live-pulse 1.1s ease-in-out infinite; }
+.status-dot.closed { background: #cb755b; }

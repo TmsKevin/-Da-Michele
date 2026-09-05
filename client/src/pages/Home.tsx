@@ -98,7 +98,9 @@ const berlinClock = () => {
   const time = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hour12: false }).format(now);
   const [hour, minute] = time.split(":").map(Number);
   const totalMinutes = hour * 60 + minute;
-  return { time, isOpen: totalMinutes >= 17 * 60 && totalMinutes < 21 * 60 + 30 };
+  const isOpen = totalMinutes >= 17 * 60 && totalMinutes < 21 * 60 + 30;
+  const state = isOpen ? (totalMinutes >= 21 * 60 ? "closing" : "open") : (totalMinutes >= 16 * 60 && totalMinutes < 17 * 60 ? "opening" : "closed");
+  return { time, state } as const;
 };
 
 export default function Home() {
@@ -164,7 +166,7 @@ export default function Home() {
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
           </div>
           <div className="hero-meta">
-            <div className="live-status"><span className="meta-label"><i className={clock.isOpen ? "status-dot is-open" : "status-dot"} />{clock.isOpen ? "JETZT GEÖFFNET" : "GERADE GESCHLOSSEN"}</span><strong>{clock.time} <small>UHR</small></strong></div>
+            <div className="live-status"><span className="meta-label"><i className={`status-dot ${clock.state}`} />{clock.state === "open" ? "JETZT GEÖFFNET" : clock.state === "opening" ? "ÖFFNET DEMNÄCHST" : clock.state === "closing" ? "SCHLIESST DEMNÄCHST" : "GERADE GESCHLOSSEN"}</span><strong>{clock.time} <small>UHR</small></strong></div>
             <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
           <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
