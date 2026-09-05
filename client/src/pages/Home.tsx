@@ -19,20 +19,29 @@ import {
 const asset = (name: string) => `/manus-storage/${name}`;
 
 const dishes = [
-  { name: "Bruschette", description: "Geröstetes Brot, Tomate, Basilikum und Olivenöl", price: "9,50", category: "Antipasti", tag: "Vegetarisch", image: asset("burrata_pomodori_0baf1362.webp") },
-  { name: "Insalata Caprese", description: "Tomaten, Mozzarella, Basilikum", price: "16", category: "Antipasti", tag: "Vegetarisch", image: asset("insalata_di_arance_bd2b69aa.webp") },
-  { name: "Parmigiana", description: "Hausgemachter Auberginen-Auflauf", price: "16", category: "Antipasti", tag: "Klassiker", image: asset("parmigiana_ec9fd276.webp") },
-  { name: "Pasta Aglio & Olio", description: "Pasta mit Knoblauch und Olivenöl", price: "9,50", category: "Pasta", tag: "Vegan", image: asset("calamaretti_73cddf1b.webp") },
-  { name: "Pasta Napoli", description: "Pasta mit Tomatensauce und Parmigiano", price: "10", category: "Pasta", tag: "Vegetarisch", image: asset("burrata_caponata_a1a72bfb.webp") },
-  { name: "Pasta All'Amatriciana", description: "Tomatensauce, Guanciale und Zwiebeln", price: "18", category: "Pasta", tag: "Tradizionale", image: asset("carree_di_vitello_48fecac6.webp") },
-  { name: "Pizza Calabrese", description: "Mit scharfer Salami", price: "16", category: "Pizza", tag: "Piccante", image: asset("tartare_di_salmone_26e64e30.webp") },
-  { name: "Pizza Salsiccia Rapa", description: "Salsiccia und Rapa, saisonal wechselnd", price: "18", category: "Pizza", tag: "Della casa", image: asset("ceviche_di_salmone_589f33fb.webp") },
-  { name: "Pescato del giorno", description: "Täglich wechselndes Fischgericht aus der Tageskarte", price: "tagespreis", category: "Pesce", tag: "Tageskarte", image: asset("tonno_crudo_rapa_rossa_spinaci_48175efe.webp") },
-  { name: "Tagliata", description: "Zartes Rind, saisonale Beilagen", price: "tagespreis", category: "Carne", tag: "Tageskarte", image: asset("tagliata_21d9b212.webp") },
-  { name: "Dolce del giorno", description: "Hausgemachte Süßspeise nach Tagesangebot", price: "tagespreis", category: "Dolci", tag: "Tageskarte", image: asset("voucher_09cf47d4.webp") },
+  { name: "Pizza Pane", description: "Pizzabrot, frisch aus dem Ofen", price: "5,00", category: "Pizza", tag: "Klassiker", image: asset("Innen1_b850898b.jpg") },
+  { name: "Margherita", description: "Tomatensoße, Mozzarella", price: "10,00", category: "Pizza", tag: "Klassiker", image: asset("Innen1_b850898b.jpg") },
+  { name: "Salami", description: "Tomatensoße, Salami, Mozzarella", price: "12,00", category: "Pizza", tag: "Beliebt", image: asset("Innen2_623c7391.jpg") },
+  { name: "Paesana", description: "Schinken, Salami, Champignons, Mozzarella", price: "14,50", category: "Pizza", tag: "Hausfavorit", image: asset("Innen1_b850898b.jpg") },
+  { name: "Capricciosa", description: "Schinken, Champignons, Zwiebeln, Artischocken, Mozzarella", price: "15,00", category: "Pizza", tag: "Klassiker", image: asset("Innen2_623c7391.jpg") },
+  { name: "Diavolo", description: "Wurst, Ei, Zwiebeln, Paprika, Peperoni, Mozzarella", price: "16,00", category: "Pizza", tag: "Piccante", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Alla Casa", description: "Tomatenstückchen, Rucola, Parmaschinken, Mozzarella", price: "18,00", category: "Pizza", tag: "Della casa", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Ai Frutti di Mare", description: "Meeresfrüchte, Gambas, Mozzarella", price: "20,00", category: "Pizza", tag: "Mare", image: asset("Innen1_b850898b.jpg") },
+  { name: "Pinsa Sicilia", description: "Thunfisch, Sardellen, Oliven, Mozzarella", price: "15,00", category: "Pinsa", tag: "Pinsa", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Pinsa Vegetariana", description: "Paprika, Artischocke, Cocktailtomaten, Spinat, Oliven, Zwiebeln", price: "15,00", category: "Pinsa", tag: "Vegetarisch", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Pinsa Campana", description: "Steinpilze, Büffelmozzarella", price: "15,00", category: "Pinsa", tag: "Pinsa", image: asset("Innen2_623c7391.jpg") },
+  { name: "Spaghetti Aglio Olio", description: "Olivenöl, Knoblauch, Peperoni", price: "10,00", category: "Pasta", tag: "Klassiker", image: asset("Innen2_623c7391.jpg") },
+  { name: "Spaghetti Bolognese", description: "Mit Bolognese-Soße", price: "12,00", category: "Pasta", tag: "Klassiker", image: asset("Innen1_b850898b.jpg") },
+  { name: "Spaghetti Carbonara", description: "Speck, Ei, Parmesan", price: "13,00", category: "Pasta", tag: "Beliebt", image: asset("Innen2_623c7391.jpg") },
+  { name: "Tagliatelle al Tartufo", description: "Trüffel-Pesto, Steinpilze, Knoblauch", price: "24,00", category: "Pasta", tag: "Speciale", image: asset("Innen1_b850898b.jpg") },
+  { name: "Gnocchi Sorrentina", description: "Gnocchi, Tomaten, Basilikum, Mozzarella", price: "13,00", category: "Pasta", tag: "Vegetarisch", image: asset("Innen2_623c7391.jpg") },
+  { name: "Insalata Verde", description: "Grüner Salat mit Joghurtdressing", price: "6,00", category: "Antipasti", tag: "Frisch", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Insalata Caprese", description: "Tomaten, Mozzarella, Basilikum, Balsamico", price: "10,00", category: "Antipasti", tag: "Vegetarisch", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Bruschetta", description: "Brot mit Tomaten, Basilikum, Knoblauch, Olivenöl, Rucola", price: "12,00", category: "Antipasti", tag: "Frisch", image: asset("Aussen_c58e6a71.jpg") },
+  { name: "Antipasti Platte", description: "Grillgemüse, 2 Bruschetta, Tomaten-Mozzarella-Salat", price: "17,00", category: "Antipasti", tag: "Zum Teilen", image: asset("Innen1_b850898b.jpg") },
 ];
 
-const categories = ["Alle", "Antipasti", "Pasta", "Pizza", "Pesce", "Carne", "Dolci"];
+const categories = ["Alle", "Pizza", "Pinsa", "Pasta", "Antipasti"];
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Alle");
@@ -66,7 +75,7 @@ export default function Home() {
           <a href="#menu" onClick={() => setMobileMenu(false)}>Speisekarte</a>
           <a href="#filosofia" onClick={() => setMobileMenu(false)}>Unsere Küche</a>
           <a href="#visita" onClick={() => setMobileMenu(false)}>Besuch uns</a>
-          <button className="nav-reserve" onClick={openReservation}>Tisch reservieren <ArrowRight size={15} /></button>
+          <a className="nav-reserve" href="tel:+497825430">Jetzt anrufen <Phone size={15} /></a>
         </nav>
         <button className="menu-toggle" onClick={() => setMobileMenu(!mobileMenu)} aria-label="Menü öffnen">
           {mobileMenu ? <X size={21} /> : <MenuIcon size={21} />}
@@ -75,23 +84,23 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Da Michele Baden-Baden <span className="eyebrow-dot">✦</span></div>
-          <h1>Italienische <i>Küche.</i><br />Mitten in Baden-Baden.</h1>
-          <p className="hero-lede">Eine täglich wechselnde Karte mit frischen Fisch- und Fleischgerichten sowie den üblichen italienischen Klassikern.</p>
+          <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Pizzeria da Michele <span className="eyebrow-dot">✦</span></div>
+          <h1>Italienisch, <i>warm</i><br />und direkt<br />auf dem Handy.</h1>
+          <p className="hero-lede">Frisch zubereitete italienische Spezialitäten in Kippenheim — mit Abholung und einem Ambiente, das drinnen wie draußen in Erinnerung bleibt.</p>
           <div className="hero-actions">
             <button className="button button-light" onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}>Speisekarte ansehen <ArrowRight size={16} /></button>
-            <button className="text-link" onClick={openReservation}>Tisch sichern <span>↗</span></button>
+            <a className="text-link" href="tel:+497825430">Abholung bestellen <span>↗</span></a>
           </div>
           <div className="hero-meta">
-            <div><span className="meta-label">HEUTE GEÖFFNET</span><strong>12:00 — 14:00 · 18:00 — 21:30</strong></div>
-            <div><span className="meta-label">BADEN-OOS</span><strong>Rheinstr. 109</strong></div>
+            <div><span className="meta-label">HEUTE GEÖFFNET</span><strong>17:00 — 21:30</strong></div>
+            <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
         </div>
         <div className="hero-visual">
-          <img src={asset("team_d491b7da.webp")} alt="Das Team von Ristorante Da Michele Baden-Baden" />
+          <img src={asset("Innen1_b850898b.jpg")} alt="Innenbereich von Ristorante Pizzeria da Michele Kippenheim" />
           <div className="hero-image-shade" />
-          <div className="hero-stamp"><span>DAL 1870</span><strong>Da<br /><i>Napoli</i><br />con amore</strong></div>
-          <div className="hero-caption"><span>01 / 04</span><span>La nostra famiglia, ogni giorno.</span></div>
+          <div className="hero-stamp"><span>DA MICHELE</span><strong>Fatto<br /><i>con</i><br />amore</strong></div>
+          <div className="hero-caption"><span>01 / 03</span><span>Dentro & fuori, sempre con amore.</span></div>
         </div>
         <div className="scroll-note"><span /> SCROLL TO TASTE</div>
       </section>
@@ -99,14 +108,14 @@ export default function Home() {
       <section className="intro-strip" id="filosofia">
         <div className="intro-number">01</div>
           <div className="intro-title"><span>Unsere</span><strong>Tradizione</strong></div>
-        <div className="intro-text">Seit 1870 steht Da Michele für italienische Gastfreundschaft und eine Küche, die sich an den besten Produkten des Tages orientiert. In Baden-Baden kocht die Familie Romano mit derselben Liebe zum Detail.</div>
-        <div className="intro-signature">con amore,<br /><span>la famiglia Romano</span></div>
+        <div className="intro-text">Frisch zubereitete Pizza, Pinsa, Pasta und Antipasti treffen auf italienische Gemütlichkeit. Im Innenbereich, auf der wunderschönen Terrasse oder einfach zur Abholung — bei uns soll es unkompliziert gut schmecken.</div>
+        <div className="intro-signature">a tavola,<br /><span>in Kippenheim</span></div>
       </section>
 
       <section className="menu-section" id="menu">
         <div className="section-heading">
-          <div><span className="kicker">Cosa c'è di nuovo</span><h2>Die Tageskarte</h2></div>
-          <p>Frische Fisch- und Fleischgerichte, italienische Klassiker und wechselnde Empfehlungen aus der Küche.</p>
+          <div><span className="kicker">Pizza · Pinsa · Pasta</span><h2>Die Karte</h2></div>
+          <p>Klassisch, herzhaft und direkt für die Abholung geeignet. Finde dein Gericht mit der Suche.</p>
         </div>
         <div className="menu-toolbar">
           <div className="category-tabs" role="tablist" aria-label="Kategorien">
@@ -127,16 +136,16 @@ export default function Home() {
       </section>
 
       <section className="experience-section">
-        <div className="experience-image"><img src={asset("team_d491b7da.webp")} alt="Das Team von Ristorante Da Michele" /><div className="image-label"><span>02</span><strong>La tavola<br /><i>è pronta.</i></strong></div></div>
-        <div className="experience-copy"><span className="kicker">Über uns</span><h2>Große Küche<br /><i>im Kleinen.</i></h2><p>Im typischen Dekor eines Pizza-Pasta-Italieners findet man bei uns, einen Steinwurf vom Baden-Badener Bahnhof entfernt, große italienische Küche.</p><div className="feature-list"><div><Star size={16} /><span>Täglich wechselnde Karte</span></div><div><Utensils size={16} /><span>Frische Fisch- und Fleischgerichte</span></div><div><Sparkles size={16} /><span>Italienische Klassiker mit Anspruch</span></div></div><a className="text-link dark-link" href="/restaurant">Mehr über uns <span>↗</span></a></div>
+        <div className="experience-image"><img src={asset("Aussen_c58e6a71.jpg")} alt="Terrasse und Außenbereich von Ristorante Pizzeria da Michele" /><div className="image-label"><span>02</span><strong>La tavola<br /><i>è pronta.</i></strong></div></div>
+        <div className="experience-copy"><span className="kicker">Innen & Außen</span><h2>Schön sitzen.<br /><i>Gut essen.</i></h2><p>Die Terrasse mit Brunnen und geschützter Lage im Hof macht unser Restaurant im Sommer zu einem besonderen Ort für Familienessen und lange Gespräche.</p><div className="feature-list"><div><Star size={16} /><span>Wunderschöne Terrasse</span></div><div><Utensils size={16} /><span>Pizza, Pinsa, Pasta & Antipasti</span></div><div><Sparkles size={16} /><span>Abholung telefonisch möglich</span></div></div><a className="text-link dark-link" href="/restaurant">Mehr über uns <span>↗</span></a></div>
       </section>
 
       <section className="visit-section" id="visita">
-        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Bis bald<br /><i>bei uns.</i></h2><p>Rheinstr. 109<br />76532 Baden-Baden · Baden-Oos</p><a className="button button-dark" href="tel:+49722161541">Anrufen <Phone size={16} /></a></div>
-        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag</span><b>12:00 — 14:00</b></div><div className="hours-row"><span>Dienstag</span><b>Geschlossen</b></div><div className="hours-row"><span>Mi — Sa</span><b>12:00 — 14:00 · 18:00 — 21:30</b></div><div className="hours-row"><span>Sonntag</span><b>18:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+49722161541"><Phone size={15} /> 07221 — 61541</a><a href="mailto:info@da-michele.com"><Instagram size={15} /> info@da-michele.com</a><a href="https://maps.google.com/?q=Rheinstrasse+109+Baden-Baden" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div></div>
+        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Bis bald<br /><i>bei uns.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+497825430">Jetzt anrufen <Phone size={16} /></a></div>
+        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+497825430"><Phone size={15} /> 07825 430</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div></div>
       </section>
 
-      <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Da Michele</span></div><span>© 2026 Ristorante Da Michele · Baden-Baden</span><div className="footer-links"><a href="https://github.com/da-michele/da-michele.com" target="_blank" rel="noreferrer">GitHub</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
+      <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
 
       {reservationOpen && <div className="modal-backdrop" onMouseDown={(event) => { if (event.currentTarget === event.target) setReservationOpen(false); }}><div className="reservation-modal"><button className="modal-close" onClick={() => setReservationOpen(false)} aria-label="Reservierung schließen"><X /></button>{reserved ? <div className="reserved-state"><span className="success-mark">✓</span><span className="kicker">Perfetto</span><h2>Dein Tisch<br /><i>ist angefragt.</i></h2><p>Wir melden uns gleich bei dir mit der Bestätigung.</p><button className="button button-dark" onClick={() => setReservationOpen(false)}>Schließen</button></div> : <><span className="kicker">La tua serata</span><h2>Tisch<br /><i>reservieren.</i></h2><p className="modal-copy">Sag uns, wann du kommen möchtest — wir halten dir den besten Platz frei.</p><div className="reservation-fields"><label><span>Datum</span><div><CalendarDays size={16} /><input type="date" defaultValue="2024-06-21" /></div></label><label><span>Uhrzeit</span><div><Clock3 size={16} /><select defaultValue="19:30"><option>18:30</option><option>19:30</option><option>20:30</option><option>21:00</option></select><ChevronDown size={15} /></div></label><label><span>Gäste</span><div><Utensils size={16} /><select defaultValue="2 Personen"><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option><option>5+ Personen</option></select><ChevronDown size={15} /></div></label></div><button className="button button-dark full-button" onClick={() => setReserved(true)}>Anfrage senden <ArrowRight size={16} /></button></>}</div></div>}
     </main>
