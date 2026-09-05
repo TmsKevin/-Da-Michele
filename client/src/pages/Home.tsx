@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import {
   ArrowRight,
@@ -60,12 +60,18 @@ const dishes = [
 
 const categories = ["Alle", "Pizza", "Pinsa", "Pasta", "Antipasti"];
 const categoryIcons = { Alle: Sparkles, Pizza: PizzaIcon, Pinsa: Wheat, Pasta: Utensils, Antipasti: Salad };
+const heroSlides = [
+  { image: "Innen1_b850898b.jpg", label: "La sala", alt: "Innenbereich von Ristorante Pizzeria da Michele Kippenheim" },
+  { image: "Aussen_c58e6a71.jpg", label: "La terrazza", alt: "Terrasse von Ristorante Pizzeria da Michele Kippenheim" },
+  { image: "Innen2_623c7391.jpg", label: "Il bar", alt: "Bar und zweiter Innenraum von Ristorante Pizzeria da Michele Kippenheim" },
+];
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [query, setQuery] = useState("");
   const [vegetarianOnly, setVegetarianOnly] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [heroSlide, setHeroSlide] = useState(0);
   const [reservationOpen, setReservationOpen] = useState(false);
   const [reserved, setReserved] = useState(false);
 
@@ -78,6 +84,11 @@ export default function Home() {
       return matchesCategory && matchesQuery && matchesDiet;
     });
   }, [activeCategory, query, vegetarianOnly]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setHeroSlide((current) => (current + 1) % heroSlides.length), 5600);
+    return () => window.clearInterval(timer);
+  }, []);
 
   const openReservation = () => {
     setReservationOpen(true);
@@ -118,12 +129,13 @@ export default function Home() {
           <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
         </div>
         <div className="hero-visual">
-          <img src={asset("Innen1_b850898b.jpg")} alt="Innenbereich von Ristorante Pizzeria da Michele Kippenheim" />
+          <img key={heroSlides[heroSlide].image} src={asset(heroSlides[heroSlide].image)} alt={heroSlides[heroSlide].alt} />
           <div className="hero-image-shade" />
           <div className="hero-frame" aria-hidden="true" />
           <div className="hero-orbit"><span>FRESH<br />EVERY DAY</span><i>✦</i><strong>DA<br /><em>MICHELE</em></strong></div>
           <div className="hero-stamp"><span>DA MICHELE</span><strong>Fatto<br /><i>con</i><br />amore</strong></div>
-          <div className="hero-caption"><span>01 / 03</span><span>Dentro & fuori, sempre con amore.</span></div>
+          <div className="hero-caption"><span>0{heroSlide + 1} / 03</span><span>{heroSlides[heroSlide].label} · sempre con amore.</span></div>
+          <div className="hero-controls" aria-label="Hero-Bilder wechseln">{heroSlides.map((slide, index) => <button key={slide.image} className={heroSlide === index ? "hero-dot active" : "hero-dot"} onClick={() => setHeroSlide(index)} aria-label={`${slide.label} anzeigen`}><span /></button>)}</div>
         </div>
         <div className="scroll-note"><span /> SCROLL TO TASTE</div>
       </section>
