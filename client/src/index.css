@@ -326,3 +326,60 @@ h1 i, h2 i, .image-label i { color: #d67c5e; font-weight: 500; }
   .legal-footer { align-items: flex-start; flex-direction: column; }
   .legal-footer div { flex-wrap: wrap; }
 }
+
+/* WOW layer: menu discovery, gallery and responsive map */
+.menu-controls { display: flex; align-items: center; gap: 10px; }
+.diet-filter { height: 42px; display: inline-flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid #d9cec0; background: transparent; color: #75695e; font: 11px 'DM Mono', monospace; letter-spacing: .04em; transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease; }
+.diet-filter span { color: #b6422f; font-size: 15px; }
+.diet-filter:hover, .diet-filter.active { background: #b6422f; border-color: #b6422f; color: #fffaf4; }
+.diet-filter.active span { color: #fffaf4; }
+.diet-filter:active, .category-tab:active { transform: scale(.97); }
+.dish-card { transition: transform .25s cubic-bezier(.23,1,.32,1), box-shadow .25s ease; }
+.dish-card:hover { transform: translateY(-7px); box-shadow: 0 18px 35px rgba(53,35,24,.13); }
+.dish-photo img { transition: transform .45s cubic-bezier(.23,1,.32,1); }
+.dish-card:hover .dish-photo img { transform: scale(1.06); }
+.gallery-section { padding: 125px clamp(24px, 7vw, 110px) 135px; background: #25201c; color: #fffaf4; overflow: hidden; }
+.gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 80px; margin-bottom: 55px; }
+.gallery-heading h2 { margin: 15px 0 0; color: #fffaf4; font: 500 clamp(48px, 6vw, 82px)/.88 'Playfair Display', serif; letter-spacing: -.06em; }
+.gallery-heading h2 i { color: #d67c5e; }
+.gallery-heading p { max-width: 390px; color: #b9aaa0; font-size: 13px; line-height: 1.7; margin: 0 0 5px; }
+.gallery-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; grid-template-rows: 230px 230px; gap: 14px; }
+.gallery-item { position: relative; overflow: hidden; min-height: 0; margin: 0; background: #3a302a; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.82); transition: transform .65s cubic-bezier(.23,1,.32,1), filter .35s ease; }
+.gallery-item:hover img { transform: scale(1.07); filter: saturate(1.05); }
+.gallery-large { grid-row: 1 / 3; }
+.gallery-tall { grid-row: 1 / 3; }
+.gallery-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(20,15,12,.68)); pointer-events: none; }
+.gallery-item figcaption { position: absolute; left: 20px; bottom: 17px; z-index: 1; display: flex; align-items: center; gap: 12px; color: #fffaf4; font: 12px 'DM Mono', monospace; letter-spacing: .04em; }
+.gallery-item figcaption span { color: #e18a6d; }
+.map-card { position: relative; margin-top: 26px; overflow: hidden; min-height: 310px; background: #d9cec0; box-shadow: 0 16px 30px rgba(34,25,19,.08); }
+.restaurant-map { height: 310px !important; filter: sepia(.15) saturate(.78); }
+.map-overlay { position: absolute; z-index: 2; top: 16px; left: 16px; right: 16px; display: flex; align-items: center; gap: 11px; width: max-content; max-width: calc(100% - 32px); padding: 12px 15px; background: rgba(255,250,244,.94); box-shadow: 0 8px 20px rgba(34,25,19,.13); }
+.map-overlay div { display: flex; flex-direction: column; gap: 3px; }
+.map-overlay strong { color: #25201c; font-size: 12px; }
+.map-overlay small { color: #75695e; font-size: 10px; }
+.map-pin { display: grid; place-items: center; width: 31px; height: 31px; background: #b6422f; color: #fffaf4; }
+@media (max-width: 820px) {
+  .menu-controls { align-items: stretch; flex-direction: column; width: 100%; }
+  .menu-controls .search-box { width: 100%; }
+  .diet-filter { justify-content: center; width: 100%; }
+  .gallery-section { padding: 84px 20px 90px; }
+  .gallery-heading { display: block; margin-bottom: 34px; }
+  .gallery-heading p { margin-top: 25px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 180px; gap: 9px; }
+  .gallery-large { grid-row: 1 / 2; grid-column: 1 / 3; }
+  .gallery-tall { grid-row: 2; }
+  .gallery-item figcaption { left: 12px; bottom: 12px; font-size: 10px; }
+  .map-card { margin-top: 20px; }
+}
+@media (max-width: 520px) {
+  .gallery-grid { grid-template-rows: 215px 145px; }
+  .gallery-heading h2 { font-size: 54px; }
+  .map-overlay { top: 10px; left: 10px; right: 10px; padding: 10px 11px; }
+  .restaurant-map { height: 260px !important; }
+  .map-card { min-height: 260px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-section, .menu-section { animation: section-rise .7s both; }
+  @keyframes section-rise { from { opacity: .35; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+}

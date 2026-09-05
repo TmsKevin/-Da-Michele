@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
+import { MapView } from "@/components/Map";
 import {
   ArrowRight,
   CalendarDays,
@@ -46,6 +47,7 @@ const categories = ["Alle", "Pizza", "Pinsa", "Pasta", "Antipasti"];
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Alle");
   const [query, setQuery] = useState("");
+  const [vegetarianOnly, setVegetarianOnly] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [reservationOpen, setReservationOpen] = useState(false);
   const [reserved, setReserved] = useState(false);
@@ -54,10 +56,11 @@ export default function Home() {
     const normalized = query.toLowerCase().trim();
     return dishes.filter((dish) => {
       const matchesCategory = activeCategory === "Alle" || dish.category === activeCategory;
-      const matchesQuery = !normalized || `${dish.name} ${dish.description} ${dish.category}`.toLowerCase().includes(normalized);
-      return matchesCategory && matchesQuery;
+      const matchesQuery = !normalized || `${dish.name} ${dish.description} ${dish.category} ${dish.tag}`.toLowerCase().includes(normalized);
+      const matchesDiet = !vegetarianOnly || dish.tag === "Vegetarisch";
+      return matchesCategory && matchesQuery && matchesDiet;
     });
-  }, [activeCategory, query]);
+  }, [activeCategory, query, vegetarianOnly]);
 
   const openReservation = () => {
     setReservationOpen(true);
@@ -121,7 +124,7 @@ export default function Home() {
           <div className="category-tabs" role="tablist" aria-label="Kategorien">
             {categories.map((category) => <button key={category} className={activeCategory === category ? "category-tab active" : "category-tab"} onClick={() => setActiveCategory(category)}>{category}</button>)}
           </div>
-          <label className="search-box"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Gericht suchen …" aria-label="Gericht suchen" />{query && <button onClick={() => setQuery("")} aria-label="Suche löschen"><X size={15} /></button>}</label>
+          <div className="menu-controls"><label className="search-box"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Gericht oder Zutat suchen …" aria-label="Gericht oder Zutat suchen" />{query && <button onClick={() => setQuery("")} aria-label="Suche löschen"><X size={15} /></button>}</label><button className={vegetarianOnly ? "diet-filter active" : "diet-filter"} onClick={() => setVegetarianOnly(!vegetarianOnly)}><span>✦</span> Vegetarisch</button></div>
         </div>
         <div className="dish-grid">
           {filteredDishes.map((dish, index) => (
@@ -131,8 +134,8 @@ export default function Home() {
             </article>
           ))}
         </div>
-        {filteredDishes.length === 0 && <div className="empty-state"><Sparkles size={18} /><strong>Nichts gefunden.</strong><span>Probier „Pasta“, „Pizza“ oder „Tiramisu“.</span></div>}
-        <div className="menu-footer"><span>Alle Preise in Euro · Änderungen vorbehalten</span><button className="button button-dark" onClick={() => { setActiveCategory("Alle"); setQuery(""); }}>Vollständige Karte <ArrowRight size={16} /></button></div>
+        {filteredDishes.length === 0 && <div className="empty-state"><Sparkles size={18} /><strong>Nichts gefunden.</strong><span>Probier „Pasta“, „Pizza“, „Mozzarella“ oder setze den Filter zurück.</span></div>}
+        <div className="menu-footer"><span>{filteredDishes.length} Gerichte gefunden · Alle Preise in Euro</span><button className="button button-dark" onClick={() => { setActiveCategory("Alle"); setQuery(""); setVegetarianOnly(false); }}>Filter zurücksetzen <ArrowRight size={16} /></button></div>
       </section>
 
       <section className="experience-section">
@@ -140,9 +143,14 @@ export default function Home() {
         <div className="experience-copy"><span className="kicker">Innen & Außen</span><h2>Schön sitzen.<br /><i>Gut essen.</i></h2><p>Die Terrasse mit Brunnen und geschützter Lage im Hof macht unser Restaurant im Sommer zu einem besonderen Ort für Familienessen und lange Gespräche.</p><div className="feature-list"><div><Star size={16} /><span>Wunderschöne Terrasse</span></div><div><Utensils size={16} /><span>Pizza, Pinsa, Pasta & Antipasti</span></div><div><Sparkles size={16} /><span>Abholung telefonisch möglich</span></div></div><a className="text-link dark-link" href="/restaurant">Mehr über uns <span>↗</span></a></div>
       </section>
 
+      <section className="gallery-section" id="galerie">
+        <div className="gallery-heading"><div><span className="kicker">Dentro & fuori</span><h2>Einblicke<br /><i>bei uns.</i></h2></div><p>Ein warmer Gastraum, ein zweiter Blick auf die Bar und unsere Terrasse im Hof — entdecke Da Michele, bevor du kommst.</p></div>
+        <div className="gallery-grid"><figure className="gallery-item gallery-large"><img src={asset("Innen1_b850898b.jpg")} alt="Angenehmes Ambiente im Innenbereich" /><figcaption><span>01</span> La sala</figcaption></figure><figure className="gallery-item"><img src={asset("Innen2_623c7391.jpg")} alt="Bar und Tische im zweiten Innenraum" /><figcaption><span>02</span> Il bar</figcaption></figure><figure className="gallery-item gallery-tall"><img src={asset("Aussen_c58e6a71.jpg")} alt="Terrasse und Außenbereich" /><figcaption><span>03</span> La terrazza</figcaption></figure></div>
+      </section>
+
       <section className="visit-section" id="visita">
         <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Bis bald<br /><i>bei uns.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+497825430">Jetzt anrufen <Phone size={16} /></a></div>
-        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+497825430"><Phone size={15} /> 07825 430</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div></div>
+        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+497825430"><Phone size={15} /> 07825 430</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><MapView className="restaurant-map" initialCenter={{ lat: 48.3015, lng: 7.8205 }} initialZoom={16} onMapReady={(map) => { new google.maps.marker.AdvancedMarkerElement({ map, position: { lat: 48.3015, lng: 7.8205 }, title: "Ristorante Pizzeria da Michele" }); }} /></div></div>
       </section>
 
       <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
