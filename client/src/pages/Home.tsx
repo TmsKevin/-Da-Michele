@@ -81,7 +81,7 @@ const dishes = [
   { name: "Alla Casa", description: "Tomatenstückchen, Rucola, Parmaschinken, Mozzarella", price: "18,00", category: "Pizza", tag: "Della casa", image: asset("italian-table_c93f51db.webp") },
   { name: "Alla Pescatore", description: "Garnelen, Lachs, Spinat, Mozzarella", price: "19,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
   { name: "Al Frutti di Mare", description: "Meeresfrüchte, Gambas, Mozzarella", price: "20,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
-  { name: "Speciale al Salsiccia", description: "Tomatensoße, Mozzarella, Salsiccia, karamellisierte Zwiebeln, Chiliflocken", price: "20,00", category: "Pizza", tag: "Speciale", image: asset("pizza_070a5566.jpg") },
+  { name: "Speciale al Salsiccia", description: "Tomatensoße, Mozzarella, Salsiccia, karamellisierte Zwiebeln, Chiliflocken", price: "15,00", category: "Pizza", tag: "Speciale", image: asset("pizza_070a5566.jpg") },
   { name: "Speciale al Burrata", description: "Tomatensoße, Mozzarella, Burrata, Rucola, Cherrytomate, Granatapfel", price: "18,00", category: "Pizza", tag: "Speciale", image: asset("pinsa-burrata_a2ceab06.jpg") },
 ];
 
