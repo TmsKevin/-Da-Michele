@@ -115,15 +115,20 @@ export default function Home() {
             <div><span className="meta-label">HEUTE GEÖFFNET</span><strong>17:00 — 21:30</strong></div>
             <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
+          <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
         </div>
         <div className="hero-visual">
           <img src={asset("Innen1_b850898b.jpg")} alt="Innenbereich von Ristorante Pizzeria da Michele Kippenheim" />
           <div className="hero-image-shade" />
+          <div className="hero-frame" aria-hidden="true" />
+          <div className="hero-orbit"><span>FRESH<br />EVERY DAY</span><i>✦</i><strong>DA<br /><em>MICHELE</em></strong></div>
           <div className="hero-stamp"><span>DA MICHELE</span><strong>Fatto<br /><i>con</i><br />amore</strong></div>
           <div className="hero-caption"><span>01 / 03</span><span>Dentro & fuori, sempre con amore.</span></div>
         </div>
         <div className="scroll-note"><span /> SCROLL TO TASTE</div>
       </section>
+
+      <div className="marquee-strip" aria-label="Ristorante Pizzeria da Michele"><div><span>LA TAVOLA</span><b>✦</b><span>LA FAMIGLIA</span><b>✦</b><span>LA PIZZA</span><b>✦</b><span>IL SAPORE</span><b>✦</b><span>LA TAVOLA</span><b>✦</b><span>LA FAMIGLIA</span><b>✦</b></div></div>
 
       <section className="intro-strip" id="filosofia">
         <div className="intro-number">01</div>
