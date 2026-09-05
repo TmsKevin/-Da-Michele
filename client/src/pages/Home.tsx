@@ -10,14 +10,24 @@ import {
   MapPin,
   Menu as MenuIcon,
   Phone,
+  Pizza as PizzaIcon,
+  Salad,
   Search,
   Sparkles,
   Star,
   Utensils,
+  Wheat,
   X,
 } from "lucide-react";
 
-const asset = (name: string) => `/manus-storage/${name}`;
+const asset = (name: string) => {
+  const localAssets: Record<string, string> = {
+    "Innen1_b850898b.jpg": "Innen1.jpg",
+    "Innen2_623c7391.jpg": "Innen2.jpg",
+    "Aussen_c58e6a71.jpg": "Aussen.jpg",
+  };
+  return `/assets/${localAssets[name] ?? name}`;
+};
 
 const dishes = [
   { name: "Pizza Pane", description: "Pizzabrot, frisch aus dem Ofen", price: "5,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
@@ -44,6 +54,7 @@ const dishes = [
 ];
 
 const categories = ["Alle", "Pizza", "Pinsa", "Pasta", "Antipasti"];
+const categoryIcons = { Alle: Sparkles, Pizza: PizzaIcon, Pinsa: Wheat, Pasta: Utensils, Antipasti: Salad };
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Alle");
@@ -123,7 +134,7 @@ export default function Home() {
         </div>
         <div className="menu-toolbar">
           <div className="category-tabs" role="tablist" aria-label="Kategorien">
-            {categories.map((category) => <button key={category} className={activeCategory === category ? "category-tab active" : "category-tab"} onClick={() => setActiveCategory(category)}>{category}</button>)}
+            {categories.map((category) => { const Icon = categoryIcons[category as keyof typeof categoryIcons]; return <button key={category} className={activeCategory === category ? "category-tab active" : "category-tab"} onClick={() => setActiveCategory(category)}><Icon size={15} strokeWidth={1.7} />{category}</button>; })}
           </div>
           <div className="menu-controls"><label className="search-box"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Gericht oder Zutat suchen …" aria-label="Gericht oder Zutat suchen" />{query && <button onClick={() => setQuery("")} aria-label="Suche löschen"><X size={15} /></button>}</label><button className={vegetarianOnly ? "diet-filter active" : "diet-filter"} onClick={() => setVegetarianOnly(!vegetarianOnly)}><span>✦</span> Vegetarisch</button></div>
         </div>
