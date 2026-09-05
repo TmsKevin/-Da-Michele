@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import { MapView } from "@/components/Map";
 import {
   ArrowRight,
   CalendarDays,
@@ -168,7 +167,7 @@ export default function Home() {
 
       <section className="visit-section" id="visita">
         <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Bis bald<br /><i>bei uns.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+497825430">Jetzt anrufen <Phone size={16} /></a></div>
-        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+497825430"><Phone size={15} /> 07825 430</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><MapView className="restaurant-map" initialCenter={{ lat: 48.3015, lng: 7.8205 }} initialZoom={16} onMapReady={(map) => { new google.maps.marker.AdvancedMarkerElement({ map, position: { lat: 48.3015, lng: 7.8205 }, title: "Ristorante Pizzeria da Michele" }); }} /></div></div>
+        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+497825430"><Phone size={15} /> 07825 430</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><iframe className="restaurant-map" title="Standort von Ristorante Pizzeria da Michele in Kippenheim" src="https://www.google.com/maps?q=Poststra%C3%9Fe+16%2C+77971+Kippenheim&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div>
       </section>
 
       <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
