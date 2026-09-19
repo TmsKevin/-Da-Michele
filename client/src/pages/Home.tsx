@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import {
   ArrowRight,
-  CalendarDays,
-  ChevronDown,
   Clock3,
   Flame,
   Instagram,
@@ -110,9 +108,6 @@ export default function Home() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [clock, setClock] = useState(berlinClock);
-  const [manualClosed, setManualClosed] = useState(false);
-  const [reservationOpen, setReservationOpen] = useState(false);
-  const [reserved, setReserved] = useState(false);
 
   const filteredDishes = useMemo(() => {
     const normalized = query.toLowerCase().trim();
@@ -133,28 +128,6 @@ export default function Home() {
     const timer = window.setInterval(() => setClock(berlinClock()), 1000);
     return () => window.clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    const savedStatus = window.localStorage.getItem("da-michele-manual-closed");
-    setManualClosed(savedStatus === null ? true : savedStatus === "true");
-  }, []);
-
-  const displayedClock = manualClosed ? { ...clock, state: "manual" as const } : clock;
-  const manageStatus = () => {
-    const code = window.prompt("Chef-Modus: Code eingeben");
-    if (code !== "ich bin ein goodboy") {
-      if (code !== null) window.alert("Falscher Code.");
-      return;
-    }
-    const closeForHoliday = window.confirm("OK = vorübergehend geschlossen setzen. Abbrechen = normalen Live-Status wieder aktivieren.");
-    setManualClosed(closeForHoliday);
-    window.localStorage.setItem("da-michele-manual-closed", String(closeForHoliday));
-  };
-
-  const openReservation = () => {
-    setReservationOpen(true);
-    setReserved(false);
-  };
 
   return (
     <main className="site-shell">
@@ -178,8 +151,8 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Pizzeria da Michele <span className="eyebrow-dot">✦</span></div>
           <h1>Italienisch, <i>warm</i><br />und direkt<br />auf dem Handy.</h1>
-          <p className="hero-lede">Frisch zubereitete italienische Spezialitäten in Kippenheim — mit Abholung und einem Ambiente, das drinnen wie draußen in Erinnerung bleibt.</p>
-          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className={`status-dot ${displayedClock.state}`} /><span>{displayedClock.state === "manual" ? "VORÜBERGEHEND GESCHLOSSEN" : displayedClock.state === "open" ? "JETZT GEÖFFNET" : displayedClock.state === "opening" ? "ÖFFNET DEMNÄCHST" : displayedClock.state === "closing" ? "SCHLIESST DEMNÄCHST" : "GERADE GESCHLOSSEN"}</span><em>LIVE</em></div><strong>{clock.time}</strong><span className="hero-live-hours">Heute · 17:00 — 21:30 Uhr</span></div>
+          <p className="hero-lede">Unser Restaurant in Kippenheim ist derzeit vorübergehend geschlossen. Wir freuen uns, dich bald wieder mit italienischen Spezialitäten begrüßen zu dürfen.</p>
+          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className="status-dot manual" /><span>VORÜBERGEHEND GESCHLOSSEN</span><em>INFO</em></div><strong>{clock.time}</strong><span className="hero-live-hours">Derzeit geschlossen · Öffnungszeiten pausieren</span></div>
           <div className="hero-actions">
             <button className="button button-light" onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}>Speisekarte ansehen <ArrowRight size={16} /></button>
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
@@ -244,13 +217,11 @@ export default function Home() {
       </section>
 
       <section className="visit-section" id="visita">
-        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Bis bald<br /><i>bei uns.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+491607917252">Jetzt anrufen <Phone size={16} /></a></div>
-        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Öffnungszeiten</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>17:00 — 21:30</b></div></div><div className="contact-links"><a href="tel:+491607917252"><Phone size={15} /> 0160 7917252</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><iframe className="restaurant-map" title="Standort von Ristorante Pizzeria da Michele in Kippenheim" src="https://www.google.com/maps?q=Poststra%C3%9Fe+16%2C+77971+Kippenheim&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div>
+        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Vorübergehend<br /><i>geschlossen.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+491607917252">Für Rückfragen anrufen <Phone size={16} /></a></div>
+        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Aktueller Status</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>Vorübergehend geschlossen</b></div></div><div className="contact-links"><a href="tel:+491607917252"><Phone size={15} /> 0160 7917252</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><iframe className="restaurant-map" title="Standort von Ristorante Pizzeria da Michele in Kippenheim" src="https://www.google.com/maps?q=Poststra%C3%9Fe+16%2C+77971+Kippenheim&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div>
       </section>
 
-      <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a><button className="status-admin" onClick={manageStatus}>Status verwalten</button></div></footer>
-
-      {reservationOpen && <div className="modal-backdrop" onMouseDown={(event) => { if (event.currentTarget === event.target) setReservationOpen(false); }}><div className="reservation-modal"><button className="modal-close" onClick={() => setReservationOpen(false)} aria-label="Reservierung schließen"><X /></button>{reserved ? <div className="reserved-state"><span className="success-mark">✓</span><span className="kicker">Perfetto</span><h2>Dein Tisch<br /><i>ist angefragt.</i></h2><p>Wir melden uns gleich bei dir mit der Bestätigung.</p><button className="button button-dark" onClick={() => setReservationOpen(false)}>Schließen</button></div> : <><span className="kicker">La tua serata</span><h2>Tisch<br /><i>reservieren.</i></h2><p className="modal-copy">Sag uns, wann du kommen möchtest — wir halten dir den besten Platz frei.</p><div className="reservation-fields"><label><span>Datum</span><div><CalendarDays size={16} /><input type="date" defaultValue="2024-06-21" /></div></label><label><span>Uhrzeit</span><div><Clock3 size={16} /><select defaultValue="19:30"><option>18:30</option><option>19:30</option><option>20:30</option><option>21:00</option></select><ChevronDown size={15} /></div></label><label><span>Gäste</span><div><Utensils size={16} /><select defaultValue="2 Personen"><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option><option>5+ Personen</option></select><ChevronDown size={15} /></div></label></div><button className="button button-dark full-button" onClick={() => setReserved(true)}>Anfrage senden <ArrowRight size={16} /></button></>}</div></div>}
+      <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
     </main>
   );
 }
