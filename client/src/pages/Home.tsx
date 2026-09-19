@@ -135,7 +135,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setManualClosed(window.localStorage.getItem("da-michele-manual-closed") === "true");
+    const savedStatus = window.localStorage.getItem("da-michele-manual-closed");
+    setManualClosed(savedStatus === null ? true : savedStatus === "true");
   }, []);
 
   const displayedClock = manualClosed ? { ...clock, state: "manual" as const } : clock;
