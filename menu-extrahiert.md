@@ -73,7 +73,7 @@ Extrahiert aus `IMG_0212.jpeg`; insgesamt **63 Gerichte**.
 | TAGLIATELLE AL TARTUFO | Mit Trüffel | 24,00 € |
 | LASAGNE | Tomatensoße, Hackfleisch, Käse, überbacken | 14,00 € |
 
-## Pesce – Fischgerichte
+## Pesce / Fischgerichte
 
 | Gericht | Beschreibung | Preis |
 |---|---|---:|
@@ -84,4 +84,3 @@ Extrahiert aus `IMG_0212.jpeg`; insgesamt **63 Gerichte**.
 | LUCIOPERCA CON PESTO | Zanderfilet mit Tagliatelle, Basilikumpesto und Salat | 33,00 € |
 | CODA DI ROSPO MEDITERRANEA | Seeteufelfilet mit Oliven, Kapern, Cocktailtomaten und Salat. Beilage: Knoblauch-Spaghetti oder Grillgemüse | 35,00 € |
 | CODA DI ROSPO ALLO ZAFFERANO | Seeteufelfilet mit Tagliatelle, Safransoße und Salat | 36,00 € |
-

@@ -32,7 +32,7 @@ const dishes: Dish[] = [
   menuItem("INSALATA CAPRESE", "Tomaten, Mozzarella, Basilikum, Essig, Olivenöl", "10,00", "Salate / Antipaste", "Vegetarisch"),
   menuItem("RUCCOLA CON BURRATA", "Burrata auf Rucola mit Parmesansplitter, Cocktail-Tomaten, Essig, Olivenöl und Balsamico-Creme", "14,00", "Salate / Antipaste", "Vegetarisch"),
   menuItem("INSALATA ITALIA", "Gemischter Salat, Tomaten, Vorderschinken, Käse, Ei", "15,00", "Salate / Antipaste", "Salat"),
-  menuItem("GAMBERI ALL’AGLIO", "4× Riesengarnelen in Knoblauchsoße", "15,00", "Salate / Antipaste", "Mare"),
+  menuItem("GAMBERI ALL'AGLIO", "4× Riesengarnelen in Knoblauchsoße", "15,00", "Salate / Antipaste", "Mare"),
   menuItem("INSALATA TACCHINO", "Gemischter Salat, gebratene Putenstreifen, Essig, Olivenöl", "16,00", "Salate / Antipaste", "Salat"),
   menuItem("INSALATA AL SALMONE", "Gemischter Salat mit gebratenem Lachsfilet, Essig, Olivenöl", "16,00", "Salate / Antipaste", "Mare"),
   menuItem("INSALATA DI MARE", "Meeresfrüchte-Salat", "17,00", "Salate / Antipaste", "Mare"),
@@ -65,7 +65,7 @@ const dishes: Dish[] = [
 
   menuItem("SPAGHETTI AGLIO E OLIO", "Olivenöl, Knoblauch, Peperoni (scharf)", "10,00", "Pasta", "Vegetarisch"),
   menuItem("SPAGHETTI BOLOGNESE", "Mit Bolognesesoße", "12,00", "Pasta"),
-  menuItem("PENNE ARRABBIATA", "Mit Tomatensoße, Peperoni (scharf)", "12,00", "Pasta", "Scharf"),
+  menuItem("PENNE ARRABIATA", "Mit Tomatensoße, Peperoni (scharf)", "12,00", "Pasta", "Scharf"),
   menuItem("SPAGHETTI CARBONARA", "Speck, Ei, Parmesan, Sahnesoße", "13,00", "Pasta"),
   menuItem("TORTELLINI ALLA PANNA", "Gefüllt mit Schinken, Sahnesoße", "13,00", "Pasta"),
   menuItem("GNOCCHI SORENTINA", "Tomaten, Basilikum, Mozzarella", "13,00", "Pasta", "Vegetarisch"),
@@ -85,17 +85,17 @@ const dishes: Dish[] = [
   menuItem("TAGLIATELLE AL TARTUFO", "Mit Trüffel", "24,00", "Pasta", "Vegetarisch"),
   menuItem("LASAGNE", "Tomatensoße, Hackfleisch, Käse, überbacken", "14,00", "Pasta"),
 
-  menuItem("RIESENGARNELEN", "Mit Knoblauchspaghetti", "29,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("CALAMARI ALLA GRIGLIA", "Gegrillter Tintenfisch mit Knoblauchspaghetti und Salat", "30,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("OKTOPUS ALLA GRIGLIA", "Gegrillter Oktopus mit Knoblauchspaghetti, Salat", "32,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("LUCIOPERCA MARINAIO", "Zanderfilet in Weißweinsoße mit Kartoffeln und Salat", "33,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("LUCIOPERCA CON PESTO", "Zanderfilet mit Tagliatelle, Basilikumpesto und Salat", "33,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("CODA DI ROSPO MEDITERRANEA", "Seeteufelfilet mit Oliven, Kapern, Cocktailtomaten und Salat. Beilage: Knoblauch-Spaghetti oder Grillgemüse", "35,00", "Pesce – Fischgerichte", "Mare"),
-  menuItem("CODA DI ROSPO ALLO ZAFFERANO", "Seeteufelfilet mit Tagliatelle, Safransoße und Salat", "36,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("RIESENGARNELEN", "Mit Knoblauchspaghetti", "29,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("CALAMARI ALLA GRIGLIA", "Gegrillter Tintenfisch mit Knoblauchspaghetti und Salat", "30,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("OKTOPUS ALLA GRIGLIA", "Gegrillter Oktopus mit Knoblauchspaghetti, Salat", "32,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("LUCIOPERCA MARINAIO", "Zanderfilet in Weißweinsoße mit Kartoffeln und Salat", "33,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("LUCIOPERCA CON PESTO", "Zanderfilet mit Tagliatelle, Basilikumpesto und Salat", "33,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("CODA DI ROSPO MEDITERRANEA", "Seeteufelfilet mit Oliven, Kapern, Cocktailtomaten und Salat. Beilage: Knoblauch-Spaghetti oder Grillgemüse", "35,00", "Pesce / Fischgerichte", "Mare"),
+  menuItem("CODA DI ROSPO ALLO ZAFFERANO", "Seeteufelfilet mit Tagliatelle, Safransoße und Salat", "36,00", "Pesce / Fischgerichte", "Mare"),
 ];
 
-const categories = ["Alle", "Salate / Antipaste", "Pizza", "Pasta", "Pesce – Fischgerichte"];
-const categoryIcons = { Alle: Sparkles, "Salate / Antipaste": Salad, Pizza: PizzaIcon, Pasta: Utensils, "Pesce – Fischgerichte": Flame };
+const categories = ["Alle", "Salate / Antipaste", "Pizza", "Pasta", "Pesce / Fischgerichte"];
+const categoryIcons = { Alle: Sparkles, "Salate / Antipaste": Salad, Pizza: PizzaIcon, Pasta: Utensils, "Pesce / Fischgerichte": Flame };
 const heroSlides = [
   { image: "Innen1_b850898b.jpg", label: "La sala", alt: "Innenbereich von Ristorante Pizzeria da Michele Kippenheim" },
   { image: "Aussen_c58e6a71.jpg", label: "La terrazza", alt: "Terrasse von Ristorante Pizzeria da Michele Kippenheim" },
