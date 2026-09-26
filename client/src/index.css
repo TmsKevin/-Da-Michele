@@ -480,3 +480,6 @@ h1 i, h2 i, .image-label i { color: #d67c5e; font-weight: 500; }
   .hero-live-clock > strong { font-size: 45px; }
   .hero-meta { margin-top: 42px; }
 }
+
+.dish-photo-text { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #25201c 0%, #41352c 100%); }
+.dish-category-mark { color: #d68a48; font: italic 500 72px/.8 'Playfair Display', serif; letter-spacing: -.1em; }

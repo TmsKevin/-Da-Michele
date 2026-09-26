@@ -14,77 +14,88 @@ import {
   Sparkles,
   Star,
   Utensils,
-  Wheat,
   X,
 } from "lucide-react";
 
 const asset = (name: string) => {
-  const localAssets: Record<string, string> = {
-    "Innen1_b850898b.jpg": "Innen1.jpg",
-    "Innen2_623c7391.jpg": "Innen2.jpg",
-    "Aussen_c58e6a71.jpg": "Aussen.jpg",
-    "pizza_070a5566.jpg": "pizza.jpg",
-    "italian-table_c93f51db.webp": "italian-table.webp",
-    "burrata-pasta_089f37dc.jpg": "burrata-pasta.jpg",
-    "caprese_1a6ebdc6.webp": "caprese.webp",
-    "pinsa-burrata_a2ceab06.jpg": "pinsa-burrata.jpg",
-  };
   const base = import.meta.env.DEV ? "https://pizzeria-da-michele-kippenheim.netlify.app" : "";
-  return `${base}/assets/${localAssets[name] ?? name}`;
+  return `${base}/assets/${name}`;
 };
 
-const dishes = [
-  { name: "Insalata Verde", description: "Grüner Salat mit Joghurtdressing", price: "6,00", category: "Antipasti", tag: "Frisch", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Insalata Mista", description: "Gemischter Salat mit Joghurtdressing", price: "8,00", category: "Antipasti", tag: "Frisch", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Insalata Caprese", description: "Tomaten, Mozzarella, Basilikum, Balsamicoessig, Olivenöl", price: "10,00", category: "Antipasti", tag: "Vegetarisch", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Bruschetta", description: "Brot mit Tomaten, Basilikum, Knoblauch, Olivenöl, Rucola", price: "12,00", category: "Antipasti", tag: "Frisch", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Antipasti per Due", description: "Vorspeisen für 2 Personen", price: "14,00", category: "Antipasti", tag: "Zum Teilen", image: asset("italian-table_c93f51db.webp") },
-  { name: "Insalata Italia", description: "Salate, Tomaten, Vorderschinken, Käse und Ei", price: "15,00", category: "Antipasti", tag: "Beliebt", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Insalata Tacchino", description: "Gemischte Salate mit gebratenen Putenstreifen, Essig-Öl-Dressing", price: "16,00", category: "Antipasti", tag: "Frisch", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Insalata al Salmone", description: "Gemischte Salate mit gebratenem Lachsfilet, Essig-Öl-Dressing", price: "18,00", category: "Antipasti", tag: "Mare", image: asset("caprese_1a6ebdc6.webp") },
-  { name: "Antipasti Platte", description: "Grillgemüse, 2 Bruschetta, Tomaten-Mozzarella-Salat", price: "18,00", category: "Antipasti", tag: "Zum Teilen", image: asset("italian-table_c93f51db.webp") },
-  { name: "Spaghetti Aglio Olio", description: "Spaghetti, Olivenöl, Knoblauch, Peperoni", price: "10,00", category: "Pasta", tag: "Klassiker", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Spaghetti Bolognese", description: "Spaghetti mit Bolognesesoße", price: "12,00", category: "Pasta", tag: "Klassiker", image: asset("italian-table_c93f51db.webp") },
-  { name: "Spaghetti Carbonara", description: "Spaghetti, Speck, Ei, Parmesan", price: "13,00", category: "Pasta", tag: "Beliebt", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Spaghetti Frutti di Mare", description: "Tomatensoße mit Gambas und Meeresfrüchten", price: "19,00", category: "Pasta", tag: "Mare", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Tagliatelle al Zaferano", description: "Safransoße, Steinpilze, Pinienkerne", price: "17,00", category: "Pasta", tag: "Speciale", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Tagliatelle al Salmone", description: "Lachs, Weißwein, Sahnesoße", price: "18,00", category: "Pasta", tag: "Mare", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Tagliatelle al Tartufo", description: "Trüffel-Pesto, Steinpilze, Knoblauch", price: "24,00", category: "Pasta", tag: "Speciale", image: asset("italian-table_c93f51db.webp") },
-  { name: "Penne Arrabiata", description: "Penne, Tomatensoße, Peperoni", price: "12,00", category: "Pasta", tag: "Piccante", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Penne Emiliana", description: "Bolognese-Sahnesoße, Schinken, Erbsen", price: "14,00", category: "Pasta", tag: "Hausfavorit", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Penne Piemontese", description: "Sahnesoße, Putenstreifen, Pilze", price: "16,00", category: "Pasta", tag: "Beliebt", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Tortellini alla Panna", description: "Tortellini, Schinken, Sahnesoße", price: "13,00", category: "Pasta", tag: "Klassiker", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Gnocchi Sorrentina", description: "Gnocchi, Tomaten, Basilikum, Mozzarella", price: "13,00", category: "Pasta", tag: "Vegetarisch", image: asset("burrata-pasta_089f37dc.jpg") },
-  { name: "Lasagna", description: "Nudelteig mit Tomaten-Hackfleischsoße, mit Käse überbacken", price: "14,00", category: "Al Forno", tag: "Ofengericht", image: asset("italian-table_c93f51db.webp") },
-  { name: "Pinsa Sicilia", description: "Tomatensoße, Thunfisch, Sardellen, Oliven, Mozzarella", price: "15,00", category: "Pinsa", tag: "Mare", image: asset("pinsa-burrata_a2ceab06.jpg") },
-  { name: "Pinsa Campana", description: "Tomatensoße, Steinpilze, Büffelmozzarella", price: "15,00", category: "Pinsa", tag: "Pinsa", image: asset("pinsa-burrata_a2ceab06.jpg") },
-  { name: "Pinsa Vegetariana", description: "Paprika, Artischocke, Cocktailtomaten, Spinat, Oliven, Zwiebeln, Mozzarella", price: "15,00", category: "Pinsa", tag: "Vegetarisch", image: asset("pinsa-burrata_a2ceab06.jpg") },
-  { name: "Pinsa Tirol", description: "Tomatensoße, Steinpilze, Speck, Mozzarella", price: "15,00", category: "Pinsa", tag: "Pinsa", image: asset("pinsa-burrata_a2ceab06.jpg") },
-  { name: "Pinsa Lucana", description: "Tomatensoße, Zwiebeln, Peperoni, Oliven, Salsiccia, Mozzarella", price: "15,00", category: "Pinsa", tag: "Piccante", image: asset("pinsa-burrata_a2ceab06.jpg") },
-  { name: "Pizza Pane", description: "Pizzabrot", price: "5,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
-  { name: "Margherita", description: "Tomatensoße, Mozzarella", price: "10,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
-  { name: "Salami", description: "Tomatensoße, Salami, Mozzarella", price: "12,00", category: "Pizza", tag: "Beliebt", image: asset("italian-table_c93f51db.webp") },
-  { name: "Prosciutto", description: "Tomatensoße, Schinken, Mozzarella", price: "12,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
-  { name: "Hawaii", description: "Tomatensoße, Schinken, Ananas, Mozzarella", price: "13,00", category: "Pizza", tag: "Beliebt", image: asset("pizza_070a5566.jpg") },
-  { name: "Paesana", description: "Schinken, Salami, Champignons, Mozzarella", price: "14,00", category: "Pizza", tag: "Hausfavorit", image: asset("pizza_070a5566.jpg") },
-  { name: "Napoletana", description: "Tomatensoße, Oliven, Kapern, Sardellen, Mozzarella", price: "14,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
-  { name: "Casalinga", description: "Tomatensoße, Salami, Zwiebeln, Champignons, Mozzarella", price: "14,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
-  { name: "Capricciosa", description: "Schinken, Champignons, Zwiebeln, Artischocken, Mozzarella", price: "15,00", category: "Pizza", tag: "Klassiker", image: asset("italian-table_c93f51db.webp") },
-  { name: "Quattro Stagioni", description: "Artischocken, Schinken, Champignons, Paprika, Mozzarella", price: "15,00", category: "Pizza", tag: "Klassiker", image: asset("pizza_070a5566.jpg") },
-  { name: "Foresta Nera", description: "Speck, Champignons, Paprika, Zwiebeln, Mozzarella", price: "16,00", category: "Pizza", tag: "Hausfavorit", image: asset("pizza_070a5566.jpg") },
-  { name: "Diavolo", description: "Wurst, Ei, Zwiebeln, Paprika, Peperoni, Mozzarella", price: "16,00", category: "Pizza", tag: "Piccante", image: asset("pizza_070a5566.jpg") },
-  { name: "Basilicata", description: "Mascarpone, Zwiebeln, Knoblauch, Vorderschinken, Peperoni, Mozzarella", price: "17,00", category: "Pizza", tag: "Speciale", image: asset("pizza_070a5566.jpg") },
-  { name: "Calzone Rustico", description: "Tomatensoße, Schinken, Ei, Salami, Champignons, Mozzarella", price: "17,00", category: "Pizza", tag: "Ofengericht", image: asset("pizza_070a5566.jpg") },
-  { name: "Mare e Monti", description: "Thunfisch, Kapern, Sardellen, Oliven, Mozzarella", price: "18,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
-  { name: "Alla Casa", description: "Tomatenstückchen, Rucola, Parmaschinken, Mozzarella", price: "18,00", category: "Pizza", tag: "Della casa", image: asset("italian-table_c93f51db.webp") },
-  { name: "Alla Pescatore", description: "Garnelen, Lachs, Spinat, Mozzarella", price: "19,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
-  { name: "Al Frutti di Mare", description: "Meeresfrüchte, Gambas, Mozzarella", price: "20,00", category: "Pizza", tag: "Mare", image: asset("pizza_070a5566.jpg") },
-  { name: "Speciale al Salsiccia", description: "Tomatensoße, Mozzarella, Salsiccia, karamellisierte Zwiebeln, Chiliflocken", price: "15,00", category: "Pizza", tag: "Speciale", image: asset("pizza_070a5566.jpg") },
-  { name: "Speciale al Burrata", description: "Tomatensoße, Mozzarella, Burrata, Rucola, Cherrytomate, Granatapfel", price: "18,00", category: "Pizza", tag: "Speciale", image: asset("pinsa-burrata_a2ceab06.jpg") },
+type Dish = { name: string; description: string; price: string; category: string; tag: string };
+const menuItem = (name: string, description: string, price: string, category: string, tag = category) => ({ name, description, price, category, tag });
+
+const dishes: Dish[] = [
+  menuItem("BRUSCHETTA", "Brot mit Tomaten, Basilikum, Knoblauch, Olivenöl, Rucola", "12,00", "Salate / Antipaste", "Vorspeise"),
+  menuItem("INSALATA VERDE", "Grüner Salat mit Joghurtdressing", "6,00", "Salate / Antipaste", "Salat"),
+  menuItem("INSALATA MISTA", "Gemischter Salat mit Joghurt-Dressing", "8,00", "Salate / Antipaste", "Salat"),
+  menuItem("INSALATA CAPRESE", "Tomaten, Mozzarella, Basilikum, Essig, Olivenöl", "10,00", "Salate / Antipaste", "Vegetarisch"),
+  menuItem("RUCCOLA CON BURRATA", "Burrata auf Rucola mit Parmesansplitter, Cocktail-Tomaten, Essig, Olivenöl und Balsamico-Creme", "14,00", "Salate / Antipaste", "Vegetarisch"),
+  menuItem("INSALATA ITALIA", "Gemischter Salat, Tomaten, Vorderschinken, Käse, Ei", "15,00", "Salate / Antipaste", "Salat"),
+  menuItem("GAMBERI ALL’AGLIO", "4× Riesengarnelen in Knoblauchsoße", "15,00", "Salate / Antipaste", "Mare"),
+  menuItem("INSALATA TACCHINO", "Gemischter Salat, gebratene Putenstreifen, Essig, Olivenöl", "16,00", "Salate / Antipaste", "Salat"),
+  menuItem("INSALATA AL SALMONE", "Gemischter Salat mit gebratenem Lachsfilet, Essig, Olivenöl", "16,00", "Salate / Antipaste", "Mare"),
+  menuItem("INSALATA DI MARE", "Meeresfrüchte-Salat", "17,00", "Salate / Antipaste", "Mare"),
+  menuItem("ANTIPASTI PLATTE", "Verschiedene Grillgemüse, 2 Bruschetta, Tomaten-Mozzarella-Salat", "18,00", "Salate / Antipaste", "Vorspeise"),
+
+  menuItem("PIZZA PANE", "Pizzabrot", "5,00", "Pizza", "Klassiker"),
+  menuItem("MARGHERITA", "Tomatensoße, Mozzarella", "10,00", "Pizza", "Vegetarisch"),
+  menuItem("SALAMI", "Tomatensoße, Mozzarella, Rindersalami (mit Pflanzenfett und Putenfleisch)", "12,00", "Pizza"),
+  menuItem("PROSCIUTTO", "Tomatensoße, Mozzarella, Schinken", "12,00", "Pizza"),
+  menuItem("HAWAII", "Tomatensoße, Mozzarella, Schinken, Ananas", "14,00", "Pizza"),
+  menuItem("PAESANA", "Tomatensoße, Mozzarella, Schinken, Rindersalami, Champignons", "14,50", "Pizza"),
+  menuItem("NAPOLETANA", "Tomatensoße, Mozzarella, Oliven, Kapern, Sardellen", "14,50", "Pizza", "Mare"),
+  menuItem("CASALINGA", "Tomatensoße, Mozzarella, Rindersalami, Zwiebeln, Champignons", "14,50", "Pizza"),
+  menuItem("CAPRICCIOSA", "Tomatensoße, Mozzarella, Schinken, Champignons, Zwiebeln, Artischocken", "15,00", "Pizza"),
+  menuItem("QUATTRO STAGIONI", "Tomatensoße, Mozzarella, Artischocken, Schinken, Champignons, Paprika", "15,00", "Pizza"),
+  menuItem("FORESTA NERA", "Tomatensoße, Mozzarella, Speck, Champignons, Paprika, Zwiebeln", "15,00", "Pizza"),
+  menuItem("AL SALSICCIA", "Tomatensoße, Mozzarella, scharfe Salami, Zwiebeln, Champignons", "15,00", "Pizza", "Scharf"),
+  menuItem("4 FORMAGGI", "Weiße Pizza mit 4 verschiedenen Käsesorten", "15,00", "Pizza", "Vegetarisch"),
+  menuItem("VEGETARISCH", "Zwiebel, Paprika, Oliven, Spinat und Artischocken", "15,00", "Pizza", "Vegetarisch"),
+  menuItem("LUCANA", "Oliven, Peperoni, Zwiebel und scharfe Salami", "15,00", "Pizza", "Scharf"),
+  menuItem("CALZONE RUSTICO", "Tomatensoße, Mozzarella, Schinken, Ei, Salami, Champignons", "15,00", "Pizza"),
+  menuItem("DIAVOLO", "Tomatensoße, Mozzarella, scharfe Salami, Ei, Paprika, Peperoni, Zwiebeln", "16,00", "Pizza", "Scharf"),
+  menuItem("BASILICATA", "Tomatensoße, Mozzarella, Mascarpone, Zwiebeln, Knoblauch, Schinken, Peperoni", "16,00", "Pizza"),
+  menuItem("MARE E MONTI", "Tomatensoße, Mozzarella, Zwiebeln, Thunfisch, Kapern, Sardellen, Oliven", "16,00", "Pizza", "Mare"),
+  menuItem("ALL' MORTADELLA", "Weiße Pizza mit Mortadella, Burrata und Pistazien", "17,00", "Pizza"),
+  menuItem("AL BURRATA", "Tomatensoße, Mozzarella, Burrata, Rucola, Cherrytomaten, Granatapfel", "18,00", "Pizza", "Vegetarisch"),
+  menuItem("ALLA CASA", "Tomatensoße, Mozzarella, Rucola, Parmaschinken, Cocktailtomaten, Parmesansplitter", "18,00", "Pizza"),
+  menuItem("ALLA PESCATORE", "Tomatensoße, Mozzarella, Shrimps, Lachs, Spinat", "19,00", "Pizza", "Mare"),
+  menuItem("AI FRUTTI DI MARE", "Tomatensoße, Mozzarella, Meeresfrüchte, Gambas", "20,00", "Pizza", "Mare"),
+
+  menuItem("SPAGHETTI AGLIO E OLIO", "Olivenöl, Knoblauch, Peperoni (scharf)", "10,00", "Pasta", "Vegetarisch"),
+  menuItem("SPAGHETTI BOLOGNESE", "Mit Bolognesesoße", "12,00", "Pasta"),
+  menuItem("PENNE ARRABBIATA", "Mit Tomatensoße, Peperoni (scharf)", "12,00", "Pasta", "Scharf"),
+  menuItem("SPAGHETTI CARBONARA", "Speck, Ei, Parmesan, Sahnesoße", "13,00", "Pasta"),
+  menuItem("TORTELLINI ALLA PANNA", "Gefüllt mit Schinken, Sahnesoße", "13,00", "Pasta"),
+  menuItem("GNOCCHI SORENTINA", "Tomaten, Basilikum, Mozzarella", "13,00", "Pasta", "Vegetarisch"),
+  menuItem("PENNE EMILIANA", "Bolognese-Sahnesoße, Schinken, Erbsen", "14,00", "Pasta"),
+  menuItem("RIGATONI ALL' FORNO", "Überbacken mit Schinken, Champignons, Erbsen und Tomaten-Sahnesoße", "15,00", "Pasta"),
+  menuItem("RIGATONI ALL' GORGONZOLA", "Gorgonzola, Walnüsse, Spinat und Sahnesoße", "15,00", "Pasta"),
+  menuItem("TORTELLINI ALL' FUNGHI", "Gefüllt mit Schinken, Pilzen, Sahnesoße und Weißwein", "13,00", "Pasta"),
+  menuItem("GNOCCHI AI 4 FORMAGGI", "4 verschiedene Käsesorten und Spinat", "14,50", "Pasta", "Vegetarisch"),
+  menuItem("RIGATONI ALL' AMATRICIANA", "Guanciale, Cocktailtomaten, Pecorino-Käse und Weißwein", "16,00", "Pasta"),
+  menuItem("PENNE PIEMONTESE", "Sahnesoße, Putenstreifen, Pilze", "16,00", "Pasta"),
+  menuItem("TAGLIATELLE AL ZAFFERANO", "Safransoße, Steinpilze, Pinienkerne", "17,00", "Pasta", "Vegetarisch"),
+  menuItem("TAGLIATELLE AL SALMONE", "Lachs, Sahnesoße, Zwiebeln", "18,00", "Pasta", "Mare"),
+  menuItem("SPAGHETTI FRUTTI DI MARE", "Tomatensoße mit Gambas und Meeresfrüchten", "19,00", "Pasta", "Mare"),
+  menuItem("PICCATA MILANESE", "Schweineschnitzel mit Parmesan-Ei-Mantel, Spaghetti, Tomatensoße, Salat", "20,00", "Pasta"),
+  menuItem("PACCHERI ALL' COZZE", "Muscheln, Cocktailtomaten, Knoblauch und Weißwein", "22,00", "Pasta", "Mare"),
+  menuItem("PACCHERI ALL' CALAMARI", "Geschnittener Tintenfisch, Cocktailtomaten, Knoblauch und Weißwein", "24,00", "Pasta", "Mare"),
+  menuItem("TAGLIATELLE AL TARTUFO", "Mit Trüffel", "24,00", "Pasta", "Vegetarisch"),
+  menuItem("LASAGNE", "Tomatensoße, Hackfleisch, Käse, überbacken", "14,00", "Pasta"),
+
+  menuItem("RIESENGARNELEN", "Mit Knoblauchspaghetti", "29,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("CALAMARI ALLA GRIGLIA", "Gegrillter Tintenfisch mit Knoblauchspaghetti und Salat", "30,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("OKTOPUS ALLA GRIGLIA", "Gegrillter Oktopus mit Knoblauchspaghetti, Salat", "32,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("LUCIOPERCA MARINAIO", "Zanderfilet in Weißweinsoße mit Kartoffeln und Salat", "33,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("LUCIOPERCA CON PESTO", "Zanderfilet mit Tagliatelle, Basilikumpesto und Salat", "33,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("CODA DI ROSPO MEDITERRANEA", "Seeteufelfilet mit Oliven, Kapern, Cocktailtomaten und Salat. Beilage: Knoblauch-Spaghetti oder Grillgemüse", "35,00", "Pesce – Fischgerichte", "Mare"),
+  menuItem("CODA DI ROSPO ALLO ZAFFERANO", "Seeteufelfilet mit Tagliatelle, Safransoße und Salat", "36,00", "Pesce – Fischgerichte", "Mare"),
 ];
 
-const categories = ["Alle", "Pizza", "Pinsa", "Pasta", "Antipasti", "Al Forno"];
-const categoryIcons = { Alle: Sparkles, Pizza: PizzaIcon, Pinsa: Wheat, Pasta: Utensils, Antipasti: Salad, "Al Forno": Flame };
+const categories = ["Alle", "Salate / Antipaste", "Pizza", "Pasta", "Pesce – Fischgerichte"];
+const categoryIcons = { Alle: Sparkles, "Salate / Antipaste": Salad, Pizza: PizzaIcon, Pasta: Utensils, "Pesce – Fischgerichte": Flame };
 const heroSlides = [
   { image: "Innen1_b850898b.jpg", label: "La sala", alt: "Innenbereich von Ristorante Pizzeria da Michele Kippenheim" },
   { image: "Aussen_c58e6a71.jpg", label: "La terrazza", alt: "Terrasse von Ristorante Pizzeria da Michele Kippenheim" },
@@ -160,7 +171,7 @@ export default function Home() {
           <div className="hero-meta">
             <div><span className="meta-label">KIPPENHEIM</span><strong>Poststraße 16</strong></div>
           </div>
-          <div className="hero-side-note">PIZZA · PINSA · PASTA · AMORE</div>
+          <div className="hero-side-note">PIZZA · PASTA · PESCE · AMORE</div>
         </div>
         <div className="hero-visual">
           <img key={heroSlides[heroSlide].image} src={asset(heroSlides[heroSlide].image)} alt={heroSlides[heroSlide].alt} />
@@ -179,13 +190,13 @@ export default function Home() {
       <section className="intro-strip" id="filosofia">
         <div className="intro-number">01</div>
           <div className="intro-title"><span>Unsere</span><strong>Tradizione</strong></div>
-        <div className="intro-text">Frisch zubereitete Pizza, Pinsa, Pasta und Antipasti treffen auf italienische Gemütlichkeit. Im Innenbereich, auf der wunderschönen Terrasse oder einfach zur Abholung — bei uns soll es unkompliziert gut schmecken.</div>
+        <div className="intro-text">Frisch zubereitete Pizza, Pasta und Antipasti treffen auf italienische Gemütlichkeit. Im Innenbereich, auf der wunderschönen Terrasse oder einfach zur Abholung — bei uns soll es unkompliziert gut schmecken.</div>
         <div className="intro-signature">a tavola,<br /><span>in Kippenheim</span></div>
       </section>
 
       <section className="menu-section" id="menu">
         <div className="section-heading">
-          <div><span className="kicker">Pizza · Pinsa · Pasta</span><h2>Die Karte</h2></div>
+          <div><span className="kicker">Pizza · Pasta · Pesce</span><h2>Die Karte</h2></div>
           <p>Klassisch, herzhaft und direkt für die Abholung geeignet. Finde dein Gericht mit der Suche.</p>
         </div>
         <div className="menu-toolbar">
@@ -197,7 +208,7 @@ export default function Home() {
         <div className="dish-grid">
           {filteredDishes.map((dish, index) => (
             <article className="dish-card" key={dish.name} style={{ "--delay": `${index * 45}ms` } as CSSProperties}>
-              <div className="dish-photo"><img src={dish.image} alt={dish.name} /><span className="dish-tag">{dish.tag}</span><button className="dish-arrow" aria-label={`${dish.name} auswählen`} onClick={() => setQuery(dish.name)}>↗</button></div>
+              <div className="dish-photo dish-photo-text"><span className="dish-category-mark">{dish.category === "Pizza" ? "P" : dish.category === "Pasta" ? "Pa" : dish.category === "Salate / Antipaste" ? "S" : "F"}</span><span className="dish-tag">{dish.tag}</span><button className="dish-arrow" aria-label={`${dish.name} auswählen`} onClick={() => setQuery(dish.name)}>↗</button></div>
               <div className="dish-info"><div><h3>{dish.name}</h3><p>{dish.description}</p></div><span className="dish-price">{dish.price} <small>€</small></span></div>
             </article>
           ))}
@@ -208,7 +219,7 @@ export default function Home() {
 
       <section className="experience-section">
         <div className="experience-image"><img src={asset("Aussen_c58e6a71.jpg")} alt="Terrasse und Außenbereich von Ristorante Pizzeria da Michele" /><div className="image-label"><span>02</span><strong>La tavola<br /><i>è pronta.</i></strong></div></div>
-        <div className="experience-copy"><span className="kicker">Innen & Außen</span><h2>Schön sitzen.<br /><i>Gut essen.</i></h2><p>Die Terrasse mit Brunnen und geschützter Lage im Hof macht unser Restaurant im Sommer zu einem besonderen Ort für Familienessen und lange Gespräche.</p><div className="feature-list"><div><Star size={16} /><span>Wunderschöne Terrasse</span></div><div><Utensils size={16} /><span>Pizza, Pinsa, Pasta & Antipasti</span></div><div><Sparkles size={16} /><span>Abholung telefonisch möglich</span></div></div><a className="text-link dark-link" href="/restaurant">Mehr über uns <span>↗</span></a></div>
+        <div className="experience-copy"><span className="kicker">Innen & Außen</span><h2>Schön sitzen.<br /><i>Gut essen.</i></h2><p>Die Terrasse mit Brunnen und geschützter Lage im Hof macht unser Restaurant im Sommer zu einem besonderen Ort für Familienessen und lange Gespräche.</p><div className="feature-list"><div><Star size={16} /><span>Wunderschöne Terrasse</span></div><div><Utensils size={16} /><span>Pizza, Pasta & Antipasti</span></div><div><Sparkles size={16} /><span>Abholung telefonisch möglich</span></div></div><a className="text-link dark-link" href="/restaurant">Mehr über uns <span>↗</span></a></div>
       </section>
 
       <section className="gallery-section" id="galerie">
