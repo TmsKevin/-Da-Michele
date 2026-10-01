@@ -107,8 +107,8 @@ const berlinClock = () => {
   const time = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hour12: false }).format(now);
   const [hour, minute] = time.split(":").map(Number);
   const totalMinutes = hour * 60 + minute;
-  const isOpen = totalMinutes >= 17 * 60 && totalMinutes < 21 * 60 + 30;
-  const state = isOpen ? (totalMinutes >= 21 * 60 ? "closing" : "open") : (totalMinutes >= 16 * 60 && totalMinutes < 17 * 60 ? "opening" : "closed");
+  const isOpen = totalMinutes >= 17 * 60 && totalMinutes < 21 * 60;
+  const state = isOpen ? "open" : "closed";
   return { time, state } as const;
 };
 
@@ -140,12 +140,12 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, []);
 
-  const isOpen = clock.state === "open" || clock.state === "closing";
+  const isOpen = clock.state === "open";
   const statusLead = isOpen
     ? "Unser Restaurant ist geöffnet. Wir freuen uns, dich mit italienischen Spezialitäten begrüßen zu dürfen."
     : "Unser Restaurant öffnet heute um 17:00 Uhr. Wir freuen uns, dich danach mit italienischen Spezialitäten zu begrüßen.";
   const statusLabel = isOpen ? "GEÖFFNET" : "ÖFFNET HEUTE UM 17:00";
-  const statusHours = isOpen ? "Heute geöffnet · 17:00 — 21:30 Uhr" : "Heute geöffnet ab 17:00 Uhr";
+  const statusHours = isOpen ? "Heute geöffnet · 17:00 — 21:00 Uhr" : "Heute geöffnet ab 17:00 Uhr";
 
   return (
     <main className="site-shell">
@@ -170,7 +170,7 @@ export default function Home() {
           <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Pizzeria da Michele <span className="eyebrow-dot">✦</span></div>
           <h1>Italienisch, <i>warm</i><br />und direkt<br />auf dem Handy.</h1>
           <p className="hero-lede">{statusLead}</p>
-          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className={isOpen ? "status-dot" : "status-dot manual"} /><span>{statusLabel}</span><em>INFO</em></div><strong>{clock.time}</strong><span className="hero-live-hours">{statusHours}</span></div>
+          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className={isOpen ? "status-dot is-open" : "status-dot manual"} /><span>{statusLabel}</span><em>INFO</em></div><strong>{clock.time}</strong><span className="hero-live-hours">{statusHours}</span></div>
           <div className="hero-actions">
             <button className="button button-light" onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}>Speisekarte ansehen <ArrowRight size={16} /></button>
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
@@ -235,8 +235,8 @@ export default function Home() {
       </section>
 
       <section className="visit-section" id="visita">
-        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>Vorübergehend<br /><i>geschlossen.</i></h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+491607917252">Für Rückfragen anrufen <Phone size={16} /></a></div>
-        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Aktueller Status</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>Vorübergehend geschlossen</b></div></div><div className="contact-links"><a href="tel:+491607917252"><Phone size={15} /> 0160 7917252</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><iframe className="restaurant-map" title="Standort von Ristorante Pizzeria da Michele in Kippenheim" src="https://www.google.com/maps?q=Poststra%C3%9Fe+16%2C+77971+Kippenheim&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div>
+        <div className="visit-left"><span className="kicker">Vieni a trovarci</span><h2>{isOpen ? <>Jetzt<br /><i>geöffnet.</i></> : <>Heute ab 17 Uhr<br /><i>geöffnet.</i></>}</h2><p>Poststraße 16<br />77971 Kippenheim</p><a className="button button-dark" href="tel:+491607917252">Für Rückfragen anrufen <Phone size={16} /></a></div>
+        <div className="visit-right"><div className="hours-card"><div className="hours-title"><Clock3 size={18} /><span>Aktueller Status</span></div><div className="hours-row"><span>Montag — Sonntag</span><b>{isOpen ? "Geöffnet · bis 21:00 Uhr" : "Geöffnet ab 17:00 Uhr"}</b></div></div><div className="contact-links"><a href="tel:+491607917252"><Phone size={15} /> 0160 7917252</a><a href="mailto:bertoldo2300@gmail.com"><Instagram size={15} /> bertoldo2300@gmail.com</a><a href="https://maps.google.com/?q=Poststraße+16+77971+Kippenheim" target="_blank" rel="noreferrer"><MapPin size={15} /> Route planen <ArrowRight size={14} /></a></div><div className="map-card"><div className="map-overlay"><span className="map-pin"><MapPin size={16} /></span><div><strong>Ristorante Pizzeria da Michele</strong><small>Poststraße 16 · Kippenheim</small></div></div><iframe className="restaurant-map" title="Standort von Ristorante Pizzeria da Michele in Kippenheim" src="https://www.google.com/maps?q=Poststra%C3%9Fe+16%2C+77971+Kippenheim&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div>
       </section>
 
       <footer className="footer"><div className="footer-brand"><span className="brand-mark">DM</span><span>Ristorante Pizzeria da Michele</span></div><span>© 2026 Da Michele · Kippenheim</span><div className="footer-links"><a href="/restaurant">Restaurant</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="/bedingungen">Bedingungen</a></div></footer>
