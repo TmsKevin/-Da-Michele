@@ -140,6 +140,13 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, []);
 
+  const isOpen = clock.state === "open" || clock.state === "closing";
+  const statusLead = isOpen
+    ? "Unser Restaurant ist geöffnet. Wir freuen uns, dich mit italienischen Spezialitäten begrüßen zu dürfen."
+    : "Unser Restaurant öffnet heute um 17:00 Uhr. Wir freuen uns, dich danach mit italienischen Spezialitäten zu begrüßen.";
+  const statusLabel = isOpen ? "GEÖFFNET" : "ÖFFNET HEUTE UM 17:00";
+  const statusHours = isOpen ? "Heute geöffnet · 17:00 — 21:30 Uhr" : "Heute geöffnet ab 17:00 Uhr";
+
   return (
     <main className="site-shell">
       <header className="topbar">
@@ -162,8 +169,8 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow"><span className="eyebrow-line" /> Ristorante Pizzeria da Michele <span className="eyebrow-dot">✦</span></div>
           <h1>Italienisch, <i>warm</i><br />und direkt<br />auf dem Handy.</h1>
-          <p className="hero-lede">Unser Restaurant in Kippenheim ist derzeit vorübergehend geschlossen. Wir freuen uns, dich bald wieder mit italienischen Spezialitäten begrüßen zu dürfen.</p>
-          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className="status-dot manual" /><span>VORÜBERGEHEND GESCHLOSSEN</span><em>INFO</em></div><strong>{clock.time}</strong><span className="hero-live-hours">Derzeit geschlossen · Öffnungszeiten pausieren</span></div>
+          <p className="hero-lede">{statusLead}</p>
+          <div className="hero-live-clock" aria-live="polite"><div className="hero-live-top"><span className={isOpen ? "status-dot" : "status-dot manual"} /><span>{statusLabel}</span><em>INFO</em></div><strong>{clock.time}</strong><span className="hero-live-hours">{statusHours}</span></div>
           <div className="hero-actions">
             <button className="button button-light" onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}>Speisekarte ansehen <ArrowRight size={16} /></button>
             <a className="text-link" href="tel:+491607917252">Abholung bestellen <span>↗</span></a>
